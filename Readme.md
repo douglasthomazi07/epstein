@@ -13,7 +13,7 @@ As alterações foram feitas para que seja possível alterar o valor de algumas 
 
 
 ## Como utilizar o simulador
-Após instalar o python3 e o framwork Mesa, basta executar no terminal o código 'mesa runserver epstein' no diretório em que o modelo se encontra.
+Após instalar o python3 e o framwork Mesa, basta executar no terminal o código 'mesa runserver epstein_civil_violence' no diretório em que o modelo se encontra.
 (Instruções para executar no Ubuntu)
 
 
