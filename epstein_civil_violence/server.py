@@ -50,9 +50,9 @@ model_params = dict(
     width=40,
     citizen_density = mesa.visualization.Slider("Citizen Density", 0.7, 0.1, 0.7, 0.1),
     cop_density= mesa.visualization.Slider("Cop Density", 0.074, 0.00, 0.3, 0.01),
-    citizen_vision=7,
-    cop_vision=7,
-    legitimacy=0.8,
+    citizen_vision=mesa.visualization.Slider("Citizen Vision", 7, 3, 10, 1),
+    cop_vision=mesa.visualization.Slider("Cop Vision", 7, 3, 10, 1),
+    legitimacy=mesa.visualization.Slider("Legitimacy", 0.8, 0.5, 1, 0.1),
     max_jail_term=1000,
 )
 

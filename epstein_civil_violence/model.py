@@ -65,6 +65,7 @@ class EpsteinCivilViolence(mesa.Model):
             "Quiescent": lambda m: self.count_type_citizens(m, "Quiescent"),
             "Active": lambda m: self.count_type_citizens(m, "Active"),
             "Jailed": self.count_jailed,
+            "AllRebels": self.count_allRebels  
         }
         agent_reporters = {
             "x": lambda a: a.pos[0],
@@ -75,7 +76,7 @@ class EpsteinCivilViolence(mesa.Model):
             "arrest_probability": lambda a: getattr(a, "arrest_probability", None),
         }
         self.datacollector = mesa.DataCollector(
-            model_reporters=model_reporters, agent_reporters=agent_reporters
+            model_reporters=model_reporters#, agent_reporters=agent_reporters
         )
         unique_id = 0
         if self.cop_density + self.citizen_density > 1:
@@ -138,5 +139,16 @@ class EpsteinCivilViolence(mesa.Model):
         count = 0
         for agent in model.schedule.agents:
             if agent.breed == "citizen" and agent.jail_sentence:
+                count += 1
+        return count
+
+    @staticmethod
+    def count_allRebels(model):
+        """
+        Helper method to count jailed agents.
+        """
+        count = 0
+        for agent in model.schedule.agents:
+            if agent.breed == "citizen" and (agent.jail_sentence or agent.condition == "Active"):
                 count += 1
         return count
